@@ -1,19 +1,20 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/09 13:12:06 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/11/05 14:17:06 by pdubsky          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 char **ft_split(char const *s, char c)
 {
 
     
     
-}
-
-
-int main()
-{
-    char *s = "Ich&bin&ein&string";
-    char c = "&";
-
-    printf("%s", ft_split(s, c));
-
 }

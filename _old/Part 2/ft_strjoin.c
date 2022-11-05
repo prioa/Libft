@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 13:12:05 by pdubsky           #+#    #+#             */
-/*   Updated: 2022/11/05 14:52:16 by pdubsky          ###   ########.fr       */
+/*   Created: 2022/10/03 16:46:21 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/10/03 17:30:03 by pdubsky          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include<stdio.h>
 
-void *ft_memset(void *s, int c, size_t n)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-    size_t i;
-    char *string;
-    
+    int i;
+    int j;
+    char *str;
+
     i = 0;
-    string = (char *) s;
-    while (i < n)
+    while(s1[i] != '\0')
     {
-        string[i] = c;
+        printf("%c\n", str[i]);
+        str[i] = s1[i];
         i++;
     }
-    return (s);
+    
+    // j = 0;
+    // while (s2[j] != '\0')
+    //     str[i] = s2[j];
+    //     i++;
+        // j++;
+
+    return (str);
+}
+
+int main(){
+    char *test1 = "Du";
+    char *test2 = " Mongo";
+    char *test = ft_strjoin(test1, test2);
+    printf("%s", test);
 }

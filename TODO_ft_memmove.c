@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   TODO_ft_memmove.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 13:11:55 by pdubsky           #+#    #+#             */
-/*   Updated: 2022/11/05 14:11:52 by pdubsky          ###   ########.fr       */
+/*   Created: 2022/10/09 13:54:24 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/10/09 13:57:57 by pdubsky          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include<stdio.h>
 
-int ft_isalnum(int c)
+void    *memmove(void *dest, const void *src, size_t n)
 {
-    if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-        return (1);
-    return (0);
+    
+}
+
+
+int main()
+{
+
 }

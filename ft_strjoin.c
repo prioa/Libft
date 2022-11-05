@@ -1,21 +1,16 @@
-#include<stdio.h>
-#include<stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/09 13:12:08 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/11/05 15:10:46 by pdubsky          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-
-size_t		ft_strlen(const char *s)
-{
-	int i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-
+#include "libft.h"
 
 
 char *ft_strjoin(char const *s1, char const *s2)
@@ -31,22 +26,12 @@ char *ft_strjoin(char const *s1, char const *s2)
     result_length = s1_length + s2_length + 1;
 
     result = malloc(sizeof(char *) * result_length);
-
+    i = 0;
     while (s1_length >= 0){
         result[i] = s1[i];
         s1_length--;
     }
 
     return (result);
-
-}
-
-
-int main()
-{
-    char *s1 = "Hey";
-    char *s2 = "du";
-
-    printf("%s\n", ft_strjoin(s1, s2));
 
 }

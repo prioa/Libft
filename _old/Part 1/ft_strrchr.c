@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 13:11:55 by pdubsky           #+#    #+#             */
-/*   Updated: 2022/11/05 14:11:52 by pdubsky          ###   ########.fr       */
+/*   Created: 2022/10/03 14:49:30 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/10/03 15:43:13 by pdubsky          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include<stdio.h>
 
-int ft_isalnum(int c)
+char *ft_strrchr(const char *s, int c)
 {
-    if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-        return (1);
+    int i;
+
+    i = 0;
+    while (s[i])
+        i++;
+    while (i >= 0)
+    {
+        if (s[i] == c)
+            return (s + i);
+        i--;
+    }
     return (0);
+}
+
+
+int main(){
+    char *test = "Hey wie gehts";
+    int test2 = 'e';
+    printf("result = %s\n", ft_strrchr(test, test2));
 }

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 13:11:55 by pdubsky           #+#    #+#             */
-/*   Updated: 2022/11/05 14:11:52 by pdubsky          ###   ########.fr       */
+/*   Created: 2022/10/03 13:40:33 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/10/03 13:50:49 by pdubsky          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include<stdio.h>
 
-int ft_isalnum(int c)
+int ft_isprint(int c)
 {
-    if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-        return (1);
-    return (0);
+    if (!(c >= 32 && c <= 126))
+        return (0);
+    return (1);
+}
+
+int main(){
+    int test = ft_isprint('~');
+    printf("result: %d\n", test);
 }
