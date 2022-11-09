@@ -13,7 +13,7 @@
 NAME=libft.a
 CFLAGS=-Wall -Wextra -Werror
 OPTIONS=-c -I.
-SRC=ft_is*.c ft_bzero.c ft_memcpy.c ft_memset.c ft_strlen.c ft_substr.c ft_to*.c ft_strjoin.c
+SRC=ft_is*.c ft_bzero.c ft_memcpy.c ft_memset.c ft_memmove.c ft_strlen.c ft_substr.c ft_to*.c ft_strjoin.c
 OBJ=*.o
 BONUS=ft_lst*.c
 

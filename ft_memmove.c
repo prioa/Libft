@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   TODO_ft_memmove.c                                  :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 13:54:24 by pdubsky           #+#    #+#             */
-/*   Updated: 2022/10/09 13:57:57 by pdubsky          ###   ########.fr       */
+/*   Created: 2022/10/09 13:12:02 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/10/09 14:01:05 by pdubsky          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include "libft.h"
 
-void    *memmove(void *dest, const void *src, size_t n)
+void *ft_memmove(void *dst, const void *src, size_t len)
 {
-    
-}
+    size_t i;
 
-
-int main()
-{
-
+    i = 0;
+    while (i < len)
+    {
+        ((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+        i++;
+    }
+    return (dst);
 }
