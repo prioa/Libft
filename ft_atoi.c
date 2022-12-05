@@ -10,19 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-int atoi(const char *s)
+int ft_atoi(const char *s)
 {
     int i;
     int sign;
     int result;
 
-    if (!s)
-        return (0);
-
+    result = 0;
+    i = 0;
+    sign = 1;
+    
     while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t' || s[i] == '\v' || s[i] == '\f' || s[i] == '\r')
         i++;
-        
-    while(s[i])
-    
+
+    if (s[i] == '-' || s[i] == '+')
+    {
+        if (s[i] == '-')
+            sign = -1;
+        i++;
+    }
+
+    while (s[i] >= '0' && s[i] <= '9')
+	{
+		result = (result * 10) + (s[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
