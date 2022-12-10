@@ -3,100 +3,88 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncolomer <ncolomer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pdubsky <pdubsky@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 15:38:59 by ncolomer          #+#    #+#             */
-/*   Updated: 2019/10/11 18:07:44 by ncolomer         ###   ########.fr       */
+/*   Created: 2022/10/09 13:12:06 by pdubsky           #+#    #+#             */
+/*   Updated: 2022/11/05 14:17:06 by pdubsky          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char
-	**ft_alloc_split(char const *s, char c)
+static int  ft_count_parts(const char *str, char set)
 {
-	size_t	i;
-	char	**split;
-	size_t	total;
+    size_t  i;
+    size_t  parts;
 
-	i = 0;
-	total = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			total++;
-		i++;
-	}
-	split = (char**)malloc(sizeof(s) * (total + 2));
-	if (!split)
-		return (NULL);
-	return (split);
+    parts = 0;
+    i = 0;
+    while (str[i] != '\0')
+    {
+        if ((str[i + 1] == set || str[i + 1] == '\0') == 1 && (str[i] == set || str[i] == '\0') == 0)
+            parts++;
+        i++;
+    }
+    return (parts);
 }
 
-void
-	*ft_free_all_split_alloc(char **split, size_t elts)
+static void ft_putword(char *dest, const char *src, char set)
 {
-	size_t	i;
+    size_t i;
 
-	i = 0;
-	while (i < elts)
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-	return (NULL);
+    i = 0;
+    while((src[i] == set || src[i] == '\0') == 0)
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
 }
 
-static void
-	*ft_split_range(char **split, char const *s,
-		t_split_next *st, t_split_next *lt)
+static int  ft_free(char **str, int size)
 {
-	split[lt->length] = ft_substr(s, st->start, st->length);
-	if (!split[lt->length])
-		return (ft_free_all_split_alloc(split, lt->length));
-	lt->length++;
-	return (split);
+    while(size--)
+        free(str[size]);
+    return (-1);
 }
 
-static void
-	*ft_split_by_char(char **split, char const *s, char c)
+static int  ft_splitter(char **split, const char *str, char set)
 {
-	size_t			i;
-	t_split_next	st;
-	t_split_next	lt;
+	int		i;
+	int		j;
+	int		part;
 
+	part = 0;
 	i = 0;
-	lt.length = 0;
-	lt.start = 0;
-	while (s[i])
+	while (str[i] != '\0')
 	{
-		if (s[i] == c)
+		if (str[i] == set || str[i] == '\0')
+			i++;
+		else
 		{
-			st.start = lt.start;
-			st.length = (i - lt.start);
-			if (i > lt.start && !ft_split_range(split, s, &st, &lt))
-				return (NULL);
-			lt.start = i + 1;
+			j = 0;
+			while ((str[i + j] == set || str[i + j] == '\0') == 0)
+				j++;
+			if ((split[part] = (char*)malloc(sizeof(char) * (j + 1))) == NULL)
+				return (ft_free(split, part - 1));
+			ft_putword(split[part], str + i, set);
+			i += j;
+			part++;
 		}
-		i++;
 	}
-	st.start = lt.start;
-	st.length = (i - lt.start);
-	if (i > lt.start && i > 0 && !ft_split_range(split, s, &st, &lt))
-		return (NULL);
-	split[lt.length] = 0;
-	return (split);
+	return (0);
 }
 
-char
-	**ft_split(char const *s, char c)
+char    **ft_split(const char *str, char c)
 {
-	char	**split;
+    char **res;
+    size_t  parts;
 
-	if (!(split = ft_alloc_split(s, c)))
+    parts = ft_count_parts(str, c);
+    if ((res = (char**)malloc(sizeof(char*) * (parts + 1))) == NULL)
+        return (NULL);
+	res[parts] = 0;
+	if (ft_splitter(res, str, c) == -1)
 		return (NULL);
-	if (!ft_split_by_char(split, s, c))
-		return (NULL);
-	return (split);
+	return (res);
 }
